@@ -1,0 +1,68 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Interessado:</h5>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="">Editar Interessado</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block" href="">Deletar Interessado</a>
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Informações do Interessado</h5>
+            <hr>
+            <p>CPF/CNPJ: </p>
+			<p>Email: </p>
+			<p>Telefone: </p>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Total Processos</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px"></h1>
+		</div>
+	</div>
+</div>
+
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<form method="get">
+
+		    <button class="btn btn-primary" type="submit">Buscar</button>
+		  </form>
+		</div>
+	</div>
+	
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Número</th>
+					<th>Municipio</th>
+					<th>Data de Criação</th>
+					<th>Status</th>
+					<th>Ver</th>
+					<th>Remover</th>
+				</tr>
+
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
