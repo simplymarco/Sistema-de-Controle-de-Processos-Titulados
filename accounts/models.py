@@ -155,8 +155,26 @@ class Interessado (models.Model):
     nome = models.CharField(max_length=200,null=True)
     cpf = models.CharField(max_length=14,null=True, unique=True, default='Somente numeros')
     email = models.EmailField(null=True)
+    
+    def __str__(self):
+        return self.nome
+
+class Setor (models.Model):
+    nome = models.CharField(max_length=200,null=True)
+    sigla = models.CharField(max_length=10,null=True)
+    
+    def __str__(self):
+        return self.sigla
 
 class Processo (models.Model):
+    STATUS = (
+			('Finalizado', 'Finalizado'),
+			('Pendente', 'Pendente'),
+			('Cancelado', 'Cancelado'),
+			)
+    interessado = models.ForeignKey(Interessado, null=True, on_delete=models.SET_NULL)
+    terra = models.ForeignKey(Terra, null=True, on_delete=models.SET_NULL)
+    setor = models.ForeignKey(Setor, null=True, on_delete=models.SET_NULL)
     numeroProcesso = models.CharField(max_length=200,null=True)
     dataProcesso = models.DateField(null=True)
     numFolhas = models.FloatField(null=True)
@@ -164,6 +182,6 @@ class Processo (models.Model):
     dataTitulo = models.DateField(null=True)
     folha = models.FloatField(null=True)
     livro = models.FloatField(null=True)
-    # interessado =
-    # terra =
+    status = models.CharField(max_length=200, null=True, choices=STATUS)
+    observação = models.CharField(max_length=200, null=True, blank=True)
     #pdf = models.FileField(upload_to='titulo/pdfs/')
