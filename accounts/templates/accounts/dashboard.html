@@ -14,11 +14,15 @@
 			<a class="btn btn-primary  btn-sm btn-block" href="">Adicionar Interessado</a>
 			<table class="table table-sm">
 				<tr>
-					<th></th>
 					<th>Interessado</th>
-					<th>Processos</th>
+					<th>CPF/CNPJ</th>
 				</tr>
-
+				{% for i in listaI %}
+                <tr>
+                    <td>{{i.nome}}</td>
+                    <td>{{i.cpf}}</td>
+                </tr>
+                {% endfor %}
 			</table>
 		</div>
 	</div>
@@ -36,7 +40,15 @@
 					<th>Ver</th>
 					<th>Remover</th>
 				</tr>
-		
+				{% for i in listaP%}
+                <tr>
+                    <td>{{i.setor}}</td>
+					<td>{{i.dataProcesso}}</td>
+					<td>{{i.status}}</td>
+					<td><a href="#">Ver</a></td>
+					<td><a href="#">Remover</a></td>
+                </tr>
+				{% endfor %}
 			</table>
 		</div>
 	</div>

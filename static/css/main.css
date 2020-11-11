@@ -15,5 +15,9 @@ body{
 }
 
 #orders-pending{
-    background-color: #7CD1C0;
+    background-color: #c9d17c;
+}
+
+#orders-cancelado{
+    background-color: #d17c7c;
 }
