@@ -150,11 +150,14 @@ class Terra(models.Model):
     numero = models.FloatField(null=True)
     area = models.FloatField(null=True)
     valor = models.FloatField(null=True)
+    def __str__(self):
+        return self.municipio
 
 class Interessado (models.Model):
     nome = models.CharField(max_length=200,null=True)
     cpf = models.CharField(max_length=14,null=True, unique=True, default='Somente numeros')
     email = models.EmailField(null=True)
+    telefone = models.CharField(max_length=200, null=True)
     
     def __str__(self):
         return self.nome
@@ -185,3 +188,6 @@ class Processo (models.Model):
     status = models.CharField(max_length=200, null=True, choices=STATUS)
     observação = models.CharField(max_length=200, null=True, blank=True)
     #pdf = models.FileField(upload_to='titulo/pdfs/')
+
+    def __str__(self):
+        return self.numeroProcesso

@@ -18,9 +18,9 @@
 		<div class="card card-body">
 			<h5>Informações do Interessado</h5>
             <hr>
-            <p>CPF/CNPJ: </p>
-			<p>Email: </p>
-			<p>Telefone: </p>
+            <p>CPF/CNPJ: {{interessado.cpf}}</p>
+			<p>Email: {{interessado.email}}</p>
+			<p>Telefone: {{interessado.telefone}}</p>
 		</div>
 	</div>
 
@@ -28,7 +28,7 @@
 		<div class="card card-body">
 			<h5>Total Processos</h5>
 			<hr>
-			<h1 style="text-align: center;padding: 10px"></h1>
+			<h1 style="text-align: center;padding: 10px">{{processosCount}}</h1>
 		</div>
 	</div>
 </div>
@@ -60,7 +60,16 @@
 					<th>Ver</th>
 					<th>Remover</th>
 				</tr>
-
+				{% for i in processos%}
+				<tr>
+					<td>{{i.numeroProcesso}}</td>
+					<td>{{i.terra}}</td>
+					<td>{{i.dataProcesso}}</td>
+					<td>{{i.status}}</td>
+					<td><a class="btn btn-sm btn-info" href="{% url 'ver_processo' i.id %}">Ver</a></td>
+					<td><a class="btn btn-sm btn-danger"href="{% url 'deletar_processo' i.id %}">Remover</a></td>
+				</tr>
+				{% endfor %}
 			</table>
 		</div>
 	</div>

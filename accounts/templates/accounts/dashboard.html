@@ -7,18 +7,20 @@
 <br>
 
 <div class="row">
-	<div class="col-md-5">
-		<h5>INTERESSADOS:</h5>
+	<div class="col-md-3">
+		<h5>INTERESSADOS</h5>
 		<hr>
 		<div class="card card-body">
-			<a class="btn btn-primary  btn-sm btn-block" href="">Adicionar Interessado</a>
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'criar_interessado' %}">Adicionar Interessado</a>
 			<table class="table table-sm">
 				<tr>
+					<th></th>
 					<th>Interessado</th>
 					<th>CPF/CNPJ</th>
 				</tr>
 				{% for i in listaI %}
                 <tr>
+					<td><a class="btn btn-sm btn-info" href="{% url 'interessado' i.id %}">Ver</a></td>
                     <td>{{i.nome}}</td>
                     <td>{{i.cpf}}</td>
                 </tr>
@@ -27,11 +29,35 @@
 		</div>
 	</div>
 
-	<div class="col-md-7">
-		<h5>ÚLTIMOS 5 PROCESSOS</h5>
+	<div class="col-md-4">
+		<h5>TERRAS</h5>
 		<hr>
 		<div class="card card-body">
-			<a class="btn btn-primary  btn-sm btn-block" href="">Criar Processo</a>
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'criar_terra' %}">Adicionar Terra</a>
+			<table class="table table-sm">
+				<tr>
+					<th>Ver</th>
+					<th>Município</th>
+                    <th>Loteamento</th>
+                    <th>Número</th>
+				</tr>
+				{% for i in listaT %}
+                <tr>
+					<td><a class="btn btn-sm btn-info" href="{% url 'ver_terra' i.id %}">Ver</a></td>
+                    <td>{{i.municipio}}</td>
+                    <td>{{i.loteamento}}</td>
+					<td>{{i.numero}}</td>
+                </tr>
+                {% endfor %}
+			</table>
+		</div>
+	</div>	
+	
+	<div class="col-md-5">
+		<h5>PROCESSOS</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'criar_processo' %}">Criar Processo</a>
 			<table class="table table-sm">
 				<tr>
 					<th>Setor</th>
@@ -45,8 +71,8 @@
                     <td>{{i.setor}}</td>
 					<td>{{i.dataProcesso}}</td>
 					<td>{{i.status}}</td>
-					<td><a href="#">Ver</a></td>
-					<td><a href="#">Remover</a></td>
+					<td><a class="btn btn-sm btn-info" href="{% url 'ver_processo' i.id %}">Ver</a></td>
+					<td><a class="btn btn-sm btn-danger"href="{% url 'deletar_processo' i.id %}">Remover</a></td>
                 </tr>
 				{% endfor %}
 			</table>
