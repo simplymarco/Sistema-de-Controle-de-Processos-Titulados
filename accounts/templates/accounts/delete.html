@@ -1,13 +1,19 @@
 {% extends 'accounts/main.html' %}
 
 {% block content %}
+<div class="row">
+    <div class="conteiner">
+        <div class="col-md">
+            <div class="card card-body">
+                <p> Tem certeza que deseja deletar {{item}}?</p>
 
-<p> Tem certeza que deseja deletar {{item}}?</p>
-
-<form action="{% url 'deletar_processo' item.id %}" method="POST">
-    {% csrf_token %}
-    <a href="{% url 'home'%}">Cancelar</a>
-    <input type="submit" value="Confirmar">
-</form>
-
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'home'%}">Cancelar</a>
+                    <input class="btn btn-outline-danger  btn-sm btn-block" type="submit" value="Confirmar">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

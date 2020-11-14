@@ -1,12 +1,18 @@
 {% extends 'accounts/main.html' %}
 
 {% block content %}
+<div class="row">
+    <div class="conteiner">
+        <div class="col-md">
+            <div class="card card-body">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{form}}
 
-<form action="" method="POST">
-    {% csrf_token %}
-    {{form}}
-
-    <input type="submit" value="Salvar">
-</form>
-
+                    <input type="submit" value="Salvar">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

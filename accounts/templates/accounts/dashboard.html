@@ -19,12 +19,12 @@
 					<th>CPF/CNPJ</th>
 				</tr>
 				{% for i in listaI %}
-                <tr>
+				<tr>
 					<td><a class="btn btn-sm btn-info" href="{% url 'interessado' i.id %}">Ver</a></td>
-                    <td>{{i.nome}}</td>
-                    <td>{{i.cpf}}</td>
-                </tr>
-                {% endfor %}
+					<td>{{i.nome}}</td>
+					<td>{{i.cpf}}</td>
+				</tr>
+				{% endfor %}
 			</table>
 		</div>
 	</div>
@@ -38,26 +38,26 @@
 				<tr>
 					<th>Ver</th>
 					<th>Município</th>
-                    <th>Loteamento</th>
-                    <th>Número</th>
+					<th>Loteamento</th>
+					<th>Número</th>
 				</tr>
 				{% for i in listaT %}
-                <tr>
+				<tr>
 					<td><a class="btn btn-sm btn-info" href="{% url 'ver_terra' i.id %}">Ver</a></td>
-                    <td>{{i.municipio}}</td>
-                    <td>{{i.loteamento}}</td>
+					<td>{{i.municipio}}</td>
+					<td>{{i.loteamento}}</td>
 					<td>{{i.numero}}</td>
-                </tr>
-                {% endfor %}
+				</tr>
+				{% endfor %}
 			</table>
 		</div>
-	</div>	
-	
+	</div>
+
 	<div class="col-md-5">
 		<h5>PROCESSOS</h5>
 		<hr>
 		<div class="card card-body">
-			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'criar_processo' %}">Criar Processo</a>
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'criar_processo' %}">Adicionar Processo</a>
 			<table class="table table-sm">
 				<tr>
 					<th>Setor</th>
@@ -67,13 +67,13 @@
 					<th>Remover</th>
 				</tr>
 				{% for i in listaP%}
-                <tr>
-                    <td>{{i.setor}}</td>
+				<tr>
+					<td>{{i.setor}}</td>
 					<td>{{i.dataProcesso}}</td>
 					<td>{{i.status}}</td>
 					<td><a class="btn btn-sm btn-info" href="{% url 'ver_processo' i.id %}">Ver</a></td>
-					<td><a class="btn btn-sm btn-danger"href="{% url 'deletar_processo' i.id %}">Remover</a></td>
-                </tr>
+					<td><a class="btn btn-sm btn-danger" href="{% url 'deletar_processo' i.id %}">Remover</a></td>
+				</tr>
 				{% endfor %}
 			</table>
 		</div>
@@ -82,4 +82,3 @@
 </div>
 
 {% endblock %}
-

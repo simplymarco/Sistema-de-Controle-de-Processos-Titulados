@@ -8,8 +8,9 @@
 		<div class="card card-body">
 			<h5>Interessado:</h5>
 			<hr>
-			<a class="btn btn-outline-info  btn-sm btn-block" href="">Editar Interessado</a>
-			<a class="btn btn-outline-danger  btn-sm btn-block" href="">Deletar Interessado</a>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'editar_interessado' interessado.id %}">Editar Interessado</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'deletar_interessado' interessado.id %}">Deletar Interessado</a>
+
 
 		</div>
 	</div>
@@ -17,8 +18,9 @@
 	<div class="col-md">
 		<div class="card card-body">
 			<h5>Informações do Interessado</h5>
-            <hr>
-            <p>CPF/CNPJ: {{interessado.cpf}}</p>
+			<hr>
+			<p>Nome: {{interessado.nome}}</p>
+			<p>CPF/CNPJ: {{interessado.cpf}}</p>
 			<p>Email: {{interessado.email}}</p>
 			<p>Telefone: {{interessado.telefone}}</p>
 		</div>
@@ -40,11 +42,11 @@
 		<div class="card card-body">
 			<form method="get">
 
-		    <button class="btn btn-primary" type="submit">Buscar</button>
-		  </form>
+				<button class="btn btn-primary" type="submit">Buscar</button>
+			</form>
 		</div>
 	</div>
-	
+
 </div>
 <br>
 
@@ -67,7 +69,7 @@
 					<td>{{i.dataProcesso}}</td>
 					<td>{{i.status}}</td>
 					<td><a class="btn btn-sm btn-info" href="{% url 'ver_processo' i.id %}">Ver</a></td>
-					<td><a class="btn btn-sm btn-danger"href="{% url 'deletar_processo' i.id %}">Remover</a></td>
+					<td><a class="btn btn-sm btn-danger" href="{% url 'deletar_processo' i.id %}">Remover</a></td>
 				</tr>
 				{% endfor %}
 			</table>

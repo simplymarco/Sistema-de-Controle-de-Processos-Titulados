@@ -25,12 +25,12 @@
                     <td>{{i.loteamento}}</td>
                     <td>{{i.numero}}</td>
                     <td>{{i.area}}</td>
-                    <td>{{i.valor}}</td> 
+                    <td>{{i.valor}}</td>
                     <td><a class="btn btn-sm btn-warning" href="{% url 'ver_terra' i.id %}">Editar</a></td>
-					<td><a class="btn btn-sm btn-danger"href="{% url 'deletar_processo' i.id %}">Remover</a></td>
+                    <td><a class="btn btn-sm btn-danger" href="{% url 'deletar_terra' i.id %}">Remover</a></td>
                 </tr>
                 {% endfor %}
-                
+
             </table>
         </div>
     </div>

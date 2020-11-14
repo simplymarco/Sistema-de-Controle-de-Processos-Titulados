@@ -32,6 +32,30 @@ def criarInteressado(request):
 
     return render(request, 'accounts/ver_form.html', context)
 
+def editarInteressado(request, pk):
+    interessado = Interessado.objects.get(id=pk)
+    form = InteressadoForm(instance=interessado)
+
+    if request.method == 'POST':
+        form = InteressadoForm(request.POST, instance=interessado)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    
+    context = {'form': form}
+
+    return render(request, 'accounts/ver_form.html', context)
+
+def deleteInteressado(request, pk):
+    interessado = Interessado.objects.get(id=pk)
+    if request.method == 'POST':
+        interessado.delete()
+        return redirect('/')
+
+    context = {'item':interessado}
+
+    return render(request, 'accounts/delete.html', context)
+
 def interessadopg(request, pk):
     interessado = Interessado.objects.get(id=pk)
     processos = interessado.processo_set.all()
