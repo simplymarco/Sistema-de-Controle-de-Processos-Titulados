@@ -12,4 +12,6 @@
         <a class="nav-item nav-link" href="{% url 'setorlist' %}">Setores</a>
       </div>
     </div>
+    <span class="hello-msg">Bem Vindo, {{request.user}}</span>
+    <span ><a  class="hello-msg" href="{% url 'logout' %}">Sair</a></span>
   </nav>
