@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
 from .forms import *
+from .filters import ProcessoFilter, TerraFilter, InteressadoFilter
 
 # Create your views here.
 
@@ -61,12 +62,19 @@ def interessadopg(request, pk):
     processos = interessado.processo_set.all()
     processosCount = processos.count()
 
-    context = {'interessado': interessado, 'processos': processos,'processosCount': processosCount}
+    myFilter = ProcessoFilter(request.GET, queryset=processos)
+    processos = myFilter.qs
+
+    context = {'interessado': interessado, 'processos': processos,'processosCount': processosCount, 'myFilter':myFilter}
     return render(request, 'accounts/interessado.html', context)
 
 def interessadolist(request):
     lista = Interessado.objects.all()
-    return render(request, 'accounts/interessadolist.html', {'lista':lista})
+
+    myFilter = InteressadoFilter(request.GET, queryset=lista)
+    lista = myFilter.qs
+
+    return render(request, 'accounts/interessadolist.html', {'lista':lista,'myFilter':myFilter})
 
 def criarProcesso(request):
 
@@ -107,7 +115,11 @@ def deleteProcesso(request, pk):
 
 def processolist(request):
     lista = Processo.objects.all()
-    return render(request, 'accounts/processolist.html', {'lista':lista})
+
+    myFilter = ProcessoFilter(request.GET, queryset=lista)
+    lista = myFilter.qs
+
+    return render(request, 'accounts/processolist.html', {'lista':lista, 'myFilter':myFilter})
 
 def criarTerra(request):
 
@@ -148,7 +160,11 @@ def deleteTerra(request, pk):
 
 def terralist(request):
     lista = Terra.objects.all()
-    return render(request, 'accounts/terras.html', {'lista':lista})
+
+    myFilter = TerraFilter(request.GET, queryset=lista)
+    lista = myFilter.qs
+
+    return render(request, 'accounts/terras.html', {'lista':lista, 'myFilter':myFilter})
 
 
 def criarSetor(request):
