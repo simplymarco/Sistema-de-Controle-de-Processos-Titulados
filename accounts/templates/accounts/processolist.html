@@ -1,0 +1,37 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+<br>
+
+<div class="row">
+    <div class="col-md">
+        <div class="card card-body">
+            <h5>Processos</h5>
+        </div>
+        <div class="card card-body">
+            <table class="table">
+                <tr>
+                    <th>Nº Processo</th>
+                    <th>Setor</th>
+                    <th>Data Processo</th>
+                    <th>Status</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                {% for i in lista %}
+                <tr>
+                    <td>{{i.numeroProcesso}}</td>
+                    <td>{{i.setor}}</td>
+                    <td>{{i.dataProcesso}}</td>
+                    <td>{{i.status}}</td>
+                    <td><a class="btn btn-sm btn-warning" href="{% url 'ver_processo' i.id %}">Editar</a></td>
+                    <td><a class="btn btn-sm btn-danger" href="{% url 'deletar_processo' i.id %}">Remover</a></td>
+                </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

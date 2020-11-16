@@ -64,9 +64,9 @@ def interessadopg(request, pk):
     context = {'interessado': interessado, 'processos': processos,'processosCount': processosCount}
     return render(request, 'accounts/interessado.html', context)
 
-def terrapg(request):
-    lista = Terra.objects.all()
-    return render(request, 'accounts/terras.html', {'lista':lista})
+def interessadolist(request):
+    lista = Interessado.objects.all()
+    return render(request, 'accounts/interessadolist.html', {'lista':lista})
 
 def criarProcesso(request):
 
@@ -95,6 +95,20 @@ def verProcesso(request, pk):
 
     return render(request, 'accounts/ver_form.html', context)
 
+def deleteProcesso(request, pk):
+    processo = Processo.objects.get(id=pk)
+    if request.method == 'POST':
+        processo.delete()
+        return redirect('/')
+
+    context = {'item':processo}
+
+    return render(request, 'accounts/delete.html', context)
+
+def processolist(request):
+    lista = Processo.objects.all()
+    return render(request, 'accounts/processolist.html', {'lista':lista})
+
 def criarTerra(request):
 
     form = TerraForm()
@@ -122,16 +136,6 @@ def verTerra(request, pk):
 
     return render(request, 'accounts/ver_form.html', context)
 
-def deleteProcesso(request, pk):
-    processo = Processo.objects.get(id=pk)
-    if request.method == 'POST':
-        processo.delete()
-        return redirect('/')
-
-    context = {'item':processo}
-
-    return render(request, 'accounts/delete.html', context)
-
 def deleteTerra(request, pk):
     processo = Terra.objects.get(id=pk)
     if request.method == 'POST':
@@ -141,3 +145,50 @@ def deleteTerra(request, pk):
     context = {'item':processo}
 
     return render(request, 'accounts/delete.html', context)
+
+def terralist(request):
+    lista = Terra.objects.all()
+    return render(request, 'accounts/terras.html', {'lista':lista})
+
+
+def criarSetor(request):
+
+    form = SetorForm()
+    if request.method == 'POST':
+        form = SetorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    
+    context = {'form': form}
+
+    return render(request, 'accounts/ver_form.html', context)
+
+def verSetor(request, pk):
+    processo = Setor.objects.get(id=pk)
+    form = SetorForm(instance=processo)
+
+    if request.method == 'POST':
+        form = SetorForm(request.POST, instance=processo)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    
+    context = {'form': form}
+
+    return render(request, 'accounts/ver_form.html', context)
+
+def deleteSetor(request, pk):
+    processo = Setor.objects.get(id=pk)
+    if request.method == 'POST':
+        processo.delete()
+        return redirect('/')
+
+    context = {'item':processo}
+
+    return render(request, 'accounts/delete.html', context)
+
+def setorlist(request):
+    lista = Setor.objects.all()
+    return render(request, 'accounts/setorlist.html', {'lista':lista})
+

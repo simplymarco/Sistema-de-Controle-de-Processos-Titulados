@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Processo, Terra, Interessado
+from .models import Processo, Terra, Interessado, Setor
 
 class ProcessoForm(ModelForm):
     class Meta:
@@ -14,4 +14,9 @@ class TerraForm(ModelForm):
 class InteressadoForm(ModelForm):
     class Meta:
         model = Interessado
+        fields = '__all__'
+
+class SetorForm(ModelForm):
+    class Meta:
+        model = Setor
         fields = '__all__'
