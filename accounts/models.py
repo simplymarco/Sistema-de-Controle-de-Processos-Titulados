@@ -187,7 +187,8 @@ class Processo (models.Model):
     livro = models.FloatField(null=True, blank=True)
     status = models.CharField(max_length=200, null=True, choices=STATUS)
     observação = models.CharField(max_length=200, null=True, blank=True)
-    #pdf = models.FileField(upload_to='titulo/pdfs/')
+    pdf = models.ImageField(upload_to='images',null=True,blank=True)
+    
 
     def __str__(self):
         return self.numeroProcesso
