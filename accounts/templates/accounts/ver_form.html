@@ -1,18 +1,46 @@
 {% extends 'accounts/main.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-<div class="row">
-    <div class="conteiner">
-        <div class="col-md">
-            <div class="card card-body">
-                <form action="" method="POST">
-                    {% csrf_token %}
-                    {{form}}
+  <body class="bg-light">
 
-                    <input type="submit" value="Salvar">
-                </form>
-            </div>
+    <div class="container">
+     <div class="row">
+        <div class="col-md-8 order-md-1">
+            <br>
+          <h4 class="mb-3">Preencha os dados abaixo</h4>
+         <form class="needs-validation" action="" method="POST" novalidate>
+				{% csrf_token %}
+            {{form|crispy}}
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Salvar</button>
+          </form>
         </div>
+      </div>
     </div>
-</div>
+
+    <script>
+      // Exemplo de JavaScript para desativar o envio do formulário, se tiver algum campo inválido.
+      (function() {
+        'use strict';
+
+        window.addEventListener('load', function() {
+          // Selecione todos os campos que nós queremos aplicar estilos Bootstrap de validação customizados.
+          var forms = document.getElementsByClassName('needs-validation');
+
+          // Faz um loop neles e previne envio
+          var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
+  </body>
+</html>
 {% endblock %}
