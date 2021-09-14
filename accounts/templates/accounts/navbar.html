@@ -1,17 +1,40 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand">SCPT</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="{% url 'home' %}">Painel Inicial</a>
-        <a class="nav-item nav-link" href="{% url 'processoslist' %}">Processos</a>
-        <a class="nav-item nav-link" href="{% url 'interessadoslist' %}">Interessados</a>
-        <a class="nav-item nav-link" href="{% url 'terraslist' %}">Terras</a>
-        <a class="nav-item nav-link" href="{% url 'setorlist' %}">Setores</a>
-      </div>
+  <a class="navbar-brand">SCPT</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="{% url 'home' %}"
+        >Painel Inicial</a
+      >
+      <a class="nav-item nav-link" href="{% url 'processoslist' %}"
+        >Processos</a
+      >
+      <a class="nav-item nav-link" href="{% url 'interessadoslist' %}"
+        >Interessados</a
+      >
+      <a class="nav-item nav-link" href="{% url 'terraslist' %}">Terras</a>
+      <a class="nav-item nav-link" href="{% url 'setorlist' %}">Setores</a>
+      <a class="nav-item nav-link" href="{% url 'criar_feedback' %}"
+        >Feedback</a
+      >
     </div>
-    <span class="hello-msg">Bem Vindo, {{request.user}}</span>
-    <span ><a  class="hello-msg btn btn-outline-danger  btn-sm btn-block" href="{% url 'logout' %}">Sair</a></span>
-  </nav>
+  </div>
+  <span class="hello-msg">Bem Vindo, {{request.user}}</span>
+  <span
+    ><a
+      class="hello-msg btn btn-outline-danger btn-sm btn-block"
+      href="{% url 'logout' %}"
+      >Sair</a
+    ></span
+  >
+</nav>
